@@ -1,4 +1,20 @@
-<h2>Hello World</h2>
-<p>
-  El nombre del personaje es <%= @name %>
-</p>
+<h2 class="headertekst">Series y Temporadas</h2>
+<br>
+<br>
+<table style="width:50%" class="center">
+  <tr>
+    <th rowspan=@temporadas_bb.to_Str>Breaking Bad</th>
+    <% for i in 1..@temporadas_bb %>
+    <tr><td><%= link_to "Temporada " + i.to_s, episodios_path(temporada: i, serie: "Breaking Bad") %></td></tr>
+    <%end%>
+  </tr>
+  <tr>
+    <th rowspan=@temporadas_bcs.to_Str>Better call Saul</th>
+    <% for i in 1..@temporadas_bcs %>
+    <tr><td><%= link_to "Temporada " + i.to_s %></td></tr>
+    <%end%>
+  </tr>
+  
+</table>
+
+<%= @results %>
