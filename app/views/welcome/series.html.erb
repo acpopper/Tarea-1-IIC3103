@@ -11,7 +11,7 @@
   <tr>
     <th rowspan=@temporadas_bcs.to_Str>Better call Saul</th>
     <% for i in 1..@temporadas_bcs %>
-    <tr><td><%= link_to "Temporada " + i.to_s %></td></tr>
+    <tr><td><%= link_to "Temporada " + i.to_s, episodios_path(temporada: i, serie: "Better call Saul") %></td></tr>
     <%end%>
   </tr>
   
