@@ -5,7 +5,7 @@
   <tr>
     <th rowspan=@lista_episodios.length().to_Str><%= "Temporada "+@temporada %></th>
     <% @lista_episodios.each_pair do |k, v| %>
-    <tr><td><%= link_to "Episodio "+k+": "+v, detalle_path(capitulo: k, serie: @serie) %></td></tr>
+    <tr><td><%= link_to "Episodio "+@numero_episodio[k].to_s+": "+v, detalle_path(capitulo: k, serie: @serie) %></td></tr>
     <%end%>
   </tr>
   </table>

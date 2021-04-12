@@ -45,9 +45,11 @@ class WelcomeController < ApplicationController
             @serie = "Better Call Saul"
         end
         @lista_episodios = {}
+        @numero_episodio = {}
         results.each do |r|
             if r["season"] == @temporada && r["series"] == @serie
                 @lista_episodios[r["episode_id"].to_s] = (r["title"])
+                @numero_episodio[r["episode_id"].to_s] = (r["episode"])
             end
         end    
         
@@ -93,7 +95,7 @@ class WelcomeController < ApplicationController
         @info["better_call_saul_appearance"].each do |i|
             @bcs_app.push(i)  
         end  
-        puts @info
+        
 
     end
 
