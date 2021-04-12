@@ -1,0 +1,17 @@
+<h2 class="headertekst">Detalles capitulo</h2>
+<br>
+<br>
+<table style="width:50%" class="center">
+    <tr><th>Serie</th><td><%= @results["series"] %></td></tr>
+    <tr><th>Título</th><td><%= @results["title"] %></td></tr>
+    <tr><th>Capitulo</th><td><%= @results["episode"] %></td></tr>
+    <tr><th>Temporada</th><td><%= @results["season"] %></td></tr>
+    <tr><th>Fecha emision</th><td><%= @results["air_date"] %></td></tr>
+    <tr><th rowspan=<%= @personajes.length().to_s %>>Personajes</th><td><%= @personajes[0] %></td></tr>
+    <% for i in 1..(@personajes.length()-1) %>
+        <tr><td><%= @personajes[i] %></td></tr>
+    <%end%>
+    
+    
+ 
+</table>

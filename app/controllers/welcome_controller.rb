@@ -30,12 +30,46 @@ class WelcomeController < ApplicationController
     def episodios
         @serie = params[:serie]
         @temporada = params[:temporada]
-        puts @serie
-        puts @temporada
+        @episodios = 0
+        if @serie == "Breaking Bad"
+            @serie = "Breaking+Bad"
+        else
+            @serie = "Better+Call+Saul"
+        end
+        url = "https://tarea-1-breaking-bad.herokuapp.com/api/episodes?series="+@serie
+        response = HTTP.get(url)
+        results = JSON.parse(response.to_str)
+        if @serie == "Breaking+Bad"
+            @serie = "Breaking Bad"
+        else
+            @serie = "Better Call Saul"
+        end
+        @lista_episodios = {}
+        results.each do |r|
+            if r["season"] == @temporada && r["series"] == @serie
+                @lista_episodios[r["episode_id"].to_s] = (r["title"])
+            end
+        end    
+        
         
     end
 
     def detalle_episodio
+        @capitulo = params[:capitulo]
+        @serie = params[:serie]
+        url = "https://tarea-1-breaking-bad.herokuapp.com/api/episodes/"+@capitulo
+        response = HTTP.get(url)
+        results = JSON.parse(response.to_str)
+        @personajes = []
+        
+        @results = results[0]
+        @results["characters"].each do |r|
+            @personajes.push(r)
+        end
+        @largo = @personajes.length().to_s
+        puts @largo
+        
+        
     end
 
     def detalle_personaje
