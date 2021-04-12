@@ -12,6 +12,7 @@
     <%end%>
     <tr><th class="text-center">Estado</th><td><%= @info["status"] %></td></tr>
     <tr><th class="text-center">Sobrenombre</th><td><%= @info["nickname"] %></td></tr>
+    <tr><th class="text-center">Actor/Actriz</th><td><%= @info["portrayed"] %></td></tr>
     <% if @aparece_en !=[]%>
     <tr><th rowspan=<%= @aparece_en.length().to_s %> class="text-center">Aparece en Breaking Bad en</th><td><%= link_to "Temporada " + @aparece_en[0].to_s, episodios_path(temporada: @aparece_en[0], serie: "Breaking Bad") %></td></tr>
     <% for i in 1..(@aparece_en.length()-1) %>
