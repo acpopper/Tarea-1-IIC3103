@@ -1,0 +1,32 @@
+<h2 class="headertekst">Detalles Personaje</h2>
+<br>
+<br>
+<img src=<%= @info["img"] %>   alt="Foto del personaje" class="centro">
+<br>
+<table style="width:50%" class="center">
+    <tr><th>Nombre</th><td><%= @info["name"] %></td></tr>
+    <tr><th>ID</th><td><%= @info["char_id"] %></td></tr>
+    <tr><th rowspan=<%= @occup.length().to_s %>>Ocupación</th><td><%=  @occup[0] %></td></tr>
+    <% for i in 1..(@occup.length()-1) %>
+        <tr><td><%=  @occup[i]%></td></tr>
+    <%end%>
+    <tr><th>Estado</th><td><%= @info["status"] %></td></tr>
+    <tr><th>Sobrenombre</th><td><%= @info["nickname"] %></td></tr>
+    <% if @aparece_en !=[]%>
+    <tr><th rowspan=<%= @aparece_en.length().to_s %>>Aparece en Breaking Bad en</th><td><%= link_to "Temporada " + @aparece_en[0].to_s, episodios_path(temporada: @aparece_en[0], serie: "Breaking Bad") %></td></tr>
+    <% for i in 1..(@aparece_en.length()-1) %>
+        <tr><td><%= link_to "Temporada " + @aparece_en[i].to_s, episodios_path(temporada: @aparece_en[i], serie: "Breaking Bad") %></td></tr>
+    <%end%>
+    <%end%>
+    <% if @bcs_app != []%>
+    <tr><th rowspan=<%= @bcs_app.length().to_s %>>Aparece en Better Call Saul en</th><td><%= link_to "Temporada " + @bcs_app[0].to_s, episodios_path(temporada: @bcs_app[0], serie: "Better Call Saul") %></td></tr>
+    <% for i in 1..(@bcs_app.length()-1) %>
+        <tr><td><%= link_to "Temporada " + @bcs_app[i].to_s, episodios_path(temporada: @bcs_app[i], serie: "Better Call Saul") %></td></tr>
+    <%end%>
+    <%end%>
+    
+    
+    
+ 
+</table>
+

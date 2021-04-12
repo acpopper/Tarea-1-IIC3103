@@ -67,12 +67,34 @@ class WelcomeController < ApplicationController
             @personajes.push(r)
         end
         @largo = @personajes.length().to_s
-        puts @largo
+        
         
         
     end
 
     def detalle_personaje
+        @name = params[:name]
+        array = @name.split(" ")
+        query = array.join("+")
+        url = "https://tarea-1-breaking-bad.herokuapp.com/api/characters?name="+query
+        response = HTTP.get(url)
+        results = JSON.parse(response.to_str)
+        @info = results[0]
+        @occup = []
+        @aparece_en = []
+        @bcs_app = []
+        @info["occupation"].each do |i|
+            @occup.push(i)  
+        end  
+
+        @info["appearance"].each do |i|
+            @aparece_en.push(i)  
+        end  
+        @info["better_call_saul_appearance"].each do |i|
+            @bcs_app.push(i)  
+        end  
+        puts @info
+
     end
 
     def personajes

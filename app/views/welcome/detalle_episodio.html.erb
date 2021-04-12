@@ -7,9 +7,9 @@
     <tr><th>Capitulo</th><td><%= @results["episode"] %></td></tr>
     <tr><th>Temporada</th><td><%= @results["season"] %></td></tr>
     <tr><th>Fecha emision</th><td><%= @results["air_date"] %></td></tr>
-    <tr><th rowspan=<%= @personajes.length().to_s %>>Personajes</th><td><%= @personajes[0] %></td></tr>
+    <tr><th rowspan=<%= @personajes.length().to_s %>>Personajes</th><td><%= link_to @personajes[0], personaje_path(name: @personajes[0]) %></td></tr>
     <% for i in 1..(@personajes.length()-1) %>
-        <tr><td><%= @personajes[i] %></td></tr>
+        <tr><td><%= link_to @personajes[i], personaje_path(name: @personajes[i])%></td></tr>
     <%end%>
     
     
