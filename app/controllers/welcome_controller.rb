@@ -100,6 +100,22 @@ class WelcomeController < ApplicationController
     end
 
     def personajes
+        if params[:search].blank?  
+            redirect_to("/") and return  
+        else  
+            @nombre = params[:search].to_s
+            query = @nombre
+            
+            if @nombre.match(/\s/)
+                array = @nombre.split(" ")
+                query = array.join("+")
+            end
+            url = "https://tarea-1-breaking-bad.herokuapp.com/api/characters?name="+query
+            response = HTTP.get(url)
+            results = JSON.parse(response.to_str)
+            @results = results
+            
+        end 
     end
 
 end

@@ -1,0 +1,8 @@
+<h2 class="headertekst">Buscas a...?</h2>
+<br>
+<br>
+<table style="width:50%" class="center">
+    <% @results.each do |r| %>
+        <tr><td><%= link_to r["name"], personaje_path(name: r["name"])%></td></tr>
+    <%end%>
+</table>
